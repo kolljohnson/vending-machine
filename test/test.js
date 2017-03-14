@@ -14,5 +14,11 @@ describe('Vending Machine', () => {
 	    machine.insertCoin('quarter');
 	    assert.equal('0.25', machine.display());
 	});
+
+	it('rejects invalid coins', () => {
+	    let machine = new VendingMachine();
+	    machine.insertCoin('penny');
+	    assert.equal('INSERT COIN', machine.display());
+	});
     });
 });
