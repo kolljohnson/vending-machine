@@ -1,7 +1,8 @@
-const assert = require('assert');
+const assert = require('chai').assert;
 const VendingMachine = require('../index');
 
 describe('Vending Machine', () => {
+    
     describe('Accepts Coins', () => {
 	
 	it('should display INSERT COIN when no coins are inserted', () => {
@@ -18,7 +19,7 @@ describe('Vending Machine', () => {
 	it('rejects invalid coins', () => {
 	    let machine = new VendingMachine();
 	    machine.insertCoin('penny');
-	    assert.equal('INSERT COIN', machine.display());
+	    assert.lengthOf(machine.coinReturn(), 1);
 	});
     });
 });
