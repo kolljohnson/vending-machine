@@ -10,12 +10,10 @@ let coinReturn = [];
 VendingMachine.prototype.display = () => {
     if(priceDisplay != '') {
 	return priceDisplay;
-    } else {
-	if(currentAmount > 0) {
-	    return currentAmount.toString();
-	} else {
-	    return 'INSERT COIN';
-	}
+    } else if (currentAmount > 0) {
+	return currentAmount.toString();
+     } else {
+	 return 'INSERT COIN';
     }
 }
 
