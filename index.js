@@ -55,6 +55,7 @@ function checkCoin(coin) {
 function checkPriceDisplay() {
     if(priceDisplay == 'THANK YOU') {
 	purchaseComplete = true;
+	currentAmount = 0;
     }
 }
 
