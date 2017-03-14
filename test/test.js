@@ -40,4 +40,16 @@ describe('Vending Machine', () => {
 	    assert.equal('INSERT COIN', machine.display());
 	});
     });
+
+    describe('Make Change', () => {
+	let machine = new VendingMachine();
+
+	it('returns excess change in the coin return after purchase', () => {
+	    machine.insertCoin('quarter');
+	    machine.insertCoin('quarter');
+	    machine.insertCoin('quarter');
+	    machine.pressButton('candy');
+	    assert.equal(['dime'], machine.coinReturn());
+	});
+    });
 });
