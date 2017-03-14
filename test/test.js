@@ -26,5 +26,12 @@ describe('Vending Machine', () => {
 	    machine.pressButton('chips');
 	    assert.equal('PRICE 0.50', machine.display());
 	});
+
+	it('dispenses product when button pressed and correct change entered', () => {
+	    machine.insertCoin('quarter');
+	    machine.insertCoin('quareter');
+	    machine.pressButton('chips');
+	    assert.equal('THANK YOU', machine.display());
+	});
     });
 });
