@@ -45,9 +45,9 @@ describe('Vending Machine', () => {
 	let machine = new VendingMachine();
 
 	it('returns excess change in the coin return after purchase', () => {
-	    machine.insertCoin('quarter');
-	    machine.insertCoin('quarter');
-	    machine.insertCoin('quarter');
+	    for(let i = 0; i < 3; i++) {
+		machine.insertCoin('quarter');
+	    }
 	    machine.pressButton('candy');
 	    assert.deepEqual(['dime'], machine.getCoins());
 	});

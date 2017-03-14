@@ -4,17 +4,17 @@ let products = {'cola': 1.00, 'chips': 0.50, 'candy': 0.65};
 function VendingMachine() {
     let coinReturn = [];
     let currentAmount = 0;
-    this.priceDisplay = '';
-    this.purchaseComplete = false;
+    let priceDisplay = '';
+    let purchaseComplete = false;
 
     this.display = () => {
 	let display = 'INSERT COIN'
-	if(this.purchaseComplete) {
-	    this.purchaseComplete = false;
+	if(purchaseComplete) {
+	    purchaseComplete = false;
 	}
-	else if(this.priceDisplay != '') {
+	else if(priceDisplay != '') {
 	    this.checkPriceDisplay();
-	    display = this.priceDisplay;
+	    display = priceDisplay;
 	} else if (currentAmount > 0) {
 	    display = `$${currentAmount.toString()}`;
 	}
@@ -38,20 +38,20 @@ function VendingMachine() {
     this.pressButton = (button) => {
 	let price = products[button];
 	if(price <= currentAmount) {
-	    this.priceDisplay = 'THANK YOU';
+	    priceDisplay = 'THANK YOU';
 	    currentAmount -= price;
-	    currentAmount = (Math.round(currentAmount * Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
+	    currentAmount = convertAmount(currentAmount);
 	if(currentAmount > 0) {
 	    this.makeChange();
 	}
     } else {
-	this.priceDisplay = `PRICE $${price.toFixed(2)}`;
+	priceDisplay = `PRICE $${price.toFixed(2)}`;
     }
     }
 
     this.checkPriceDisplay = () => {
-	if(this.priceDisplay == 'THANK YOU') {
-	    this.purchaseComplete = true;
+	if(priceDisplay == 'THANK YOU') {
+	    purchaseComplete = true;
 	    currentAmount = 0;
 	}
     }
@@ -75,5 +75,8 @@ function checkCoin(coin) {
     return 0;
 }
 
+function convertAmount(amount) {
+    return (Math.round(amount * Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
+}
 
 module.exports = VendingMachine;
