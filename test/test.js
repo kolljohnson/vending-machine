@@ -20,4 +20,11 @@ describe('Vending Machine', () => {
 	    assert.lengthOf(machine.coinReturn(), 1);
 	});
     });
+
+    describe('Select Product', () => {
+	it('displays price when invalid', () => {
+	    machine.pressButton('chips');
+	    assert.equal('PRICE 0.50', machine.display());
+	});
+    });
 });
