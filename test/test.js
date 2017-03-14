@@ -17,7 +17,7 @@ describe('Vending Machine', () => {
 
 	it('rejects invalid coins', () => {
 	    machine.insertCoin('penny');
-	    assert.lengthOf(machine.coinReturn(), 1);
+	    assert.lengthOf(machine.getCoins(), 1);
 	});
     });
 
@@ -49,7 +49,7 @@ describe('Vending Machine', () => {
 	    machine.insertCoin('quarter');
 	    machine.insertCoin('quarter');
 	    machine.pressButton('candy');
-	    assert.equal(['dime'], machine.coinReturn());
+	    assert.deepEqual(['dime'], machine.getCoins());
 	});
     });
 });
