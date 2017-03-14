@@ -9,18 +9,17 @@ let coinReturn = [];
 let purchaseComplete = false;
 
 VendingMachine.prototype.display = () => {
+    let display = 'INSERT COIN'
     if(purchaseComplete) {
 	purchaseComplete = false;
-	return 'INSERT COIN';
     }
     else if(priceDisplay != '') {
 	checkPriceDisplay();
-	return priceDisplay;
+	display = priceDisplay;
     } else if (currentAmount > 0) {
-	return currentAmount.toString();
-     } else {
-	 return 'INSERT COIN';
+	display = `$${currentAmount.toString()}`;
     }
+    return display;
 }
 
 VendingMachine.prototype.insertCoin = (coin) => {
@@ -42,7 +41,7 @@ VendingMachine.prototype.pressButton = (button) => {
     if(price <= currentAmount) {
 	priceDisplay = 'THANK YOU';
     } else {
-	priceDisplay = `PRICE ${price.toFixed(2)}`;
+	priceDisplay = `PRICE $${price.toFixed(2)}`;
     }
 }
 
