@@ -33,7 +33,11 @@ VendingMachine.prototype.coinReturn = () => {
 
 VendingMachine.prototype.pressButton = (button) => {
     let price = products[button];
-    priceDisplay = `PRICE ${price.toFixed(2)}`;
+    if(price == currentAmount) {
+	priceDisplay = 'THANK YOU';
+    } else {
+	priceDisplay = `PRICE ${price.toFixed(2)}`;
+    }
 }
 
 function checkCoin(coin) {
