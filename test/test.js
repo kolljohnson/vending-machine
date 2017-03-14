@@ -12,7 +12,7 @@ describe('Vending Machine', () => {
 	it('adds valid coin amount to current amount', () => {
 	    let machine = new VendingMachine();
 	    machine.insertCoin('quarter');
-	    assert.equal(0.25, machine.currentAmount);
+	    assert.equal('0.25', machine.display());
 	});
     });
 });
