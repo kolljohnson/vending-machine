@@ -33,7 +33,7 @@ VendingMachine.prototype.coinReturn = () => {
 
 VendingMachine.prototype.pressButton = (button) => {
     let price = products[button];
-    if(price == currentAmount) {
+    if(price <= currentAmount) {
 	priceDisplay = 'THANK YOU';
     } else {
 	priceDisplay = `PRICE ${price.toFixed(2)}`;

@@ -2,9 +2,9 @@ const assert = require('chai').assert;
 const VendingMachine = require('../index');
 
 describe('Vending Machine', () => {
-    let machine = new VendingMachine();
     
     describe('Accepts Coins', () => {
+	let machine = new VendingMachine();
 	
 	it('should display INSERT COIN when no coins are inserted', () => {
 	    assert.equal('INSERT COIN', machine.display());
@@ -22,6 +22,8 @@ describe('Vending Machine', () => {
     });
 
     describe('Select Product', () => {
+	let machine = new VendingMachine();
+	
 	it('displays price when invalid', () => {
 	    machine.pressButton('chips');
 	    assert.equal('PRICE 0.50', machine.display());
@@ -29,7 +31,7 @@ describe('Vending Machine', () => {
 
 	it('dispenses product when button pressed and correct change entered', () => {
 	    machine.insertCoin('quarter');
-	    machine.insertCoin('quareter');
+	    machine.insertCoin('quarter');
 	    machine.pressButton('chips');
 	    assert.equal('THANK YOU', machine.display());
 	});
