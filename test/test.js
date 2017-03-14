@@ -35,5 +35,9 @@ describe('Vending Machine', () => {
 	    machine.pressButton('chips');
 	    assert.equal('THANK YOU', machine.display());
 	});
+
+	it('displays INSERT COIN after purchase complete', () => {
+	    assert.equal('INSERT COIN', machine.display());
+	});
     });
 });
