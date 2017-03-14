@@ -6,9 +6,15 @@ let products = {'cola': 1.00, 'chips': 0.50, 'candy': 0.65}
 let currentAmount = 0;
 let priceDisplay = '';
 let coinReturn = [];
+let purchaseComplete = false;
 
 VendingMachine.prototype.display = () => {
-    if(priceDisplay != '') {
+    if(purchaseComplete) {
+	purchaseComplete = false;
+	return 'INSERT COIN';
+    }
+    else if(priceDisplay != '') {
+	checkPriceDisplay();
 	return priceDisplay;
     } else if (currentAmount > 0) {
 	return currentAmount.toString();
@@ -45,6 +51,12 @@ function checkCoin(coin) {
 	return validCoins[coin];
     }
     return 0;
+}
+
+function checkPriceDisplay() {
+    if(priceDisplay == 'THANK YOU') {
+	purchaseComplete = true;
+    }
 }
 
 module.exports = VendingMachine;
