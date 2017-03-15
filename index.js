@@ -57,8 +57,7 @@ function VendingMachine() {
     }
 
     this.makeChange = () => {
-	Object.keys(validCoins).forEach(function(key, index) {
-	    console.log(currentAmount);
+	Object.keys(validCoins).forEach( (key, index) => {
 	    if(currentAmount >= validCoins[key].toFixed(2)) {
 		currentAmount -= validCoins[key];
 		coinReturn.push(key);
