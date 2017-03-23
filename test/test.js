@@ -15,6 +15,16 @@ describe('Vending Machine', () => {
 	    assert.equal('$0.25', machine.display());
 	});
 
+        it('accepts dimes', () => {
+	    machine.insertCoin('dime');
+	    assert.equal('$0.35', machine.display());
+	});
+
+	it('accepts nickels', () => {
+	    machine.insertCoin('nickel');
+	    assert.equal('$0.40', machine.display());
+	});
+
 	it('rejects invalid coins', () => {
 	    machine.insertCoin('penny');
 	    assert.lengthOf(machine.getCoins(), 1);
