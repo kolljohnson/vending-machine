@@ -8,12 +8,12 @@ function VendingMachine() {
     let purchaseComplete = false;
 
     this.display = () => {
-	let display = 'INSERT COIN'
-	if(purchaseComplete) {
-	    purchaseComplete = false;
-	}
+        let display = 'INSERT COIN'
+        if(purchaseComplete) {
+            purchaseComplete = false;
+        }
 	else if(priceDisplay != '') {
-	    this.checkPriceDisplay();
+	    this.updatePriceDisplay();
 	    display = priceDisplay;
 	} else if (currentAmount > 0) {
 	    display = `$${convertAmount(currentAmount.toString())}`;
@@ -41,16 +41,17 @@ function VendingMachine() {
 	    priceDisplay = 'THANK YOU';
 	    currentAmount -= price;
 	    currentAmount = convertAmount(currentAmount);
-	if(currentAmount > 0) {
-	    this.makeChange();
+	    
+	    if(currentAmount > 0) {
+		this.makeChange();
+	    }
+	} else {
+	    priceDisplay = `PRICE $${price.toFixed(2)}`;
 	}
-    } else {
-	priceDisplay = `PRICE $${price.toFixed(2)}`;
-    }
     }
 
-    this.checkPriceDisplay = () => {
-	if(priceDisplay == 'THANK YOU') {
+    this.updatePriceDisplay = () => {
+	if(priceDisplay === 'THANK YOU') {
 	    purchaseComplete = true;
 	    currentAmount = 0;
 	}
