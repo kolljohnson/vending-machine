@@ -16,7 +16,7 @@ function VendingMachine() {
 	    this.checkPriceDisplay();
 	    display = priceDisplay;
 	} else if (currentAmount > 0) {
-	    display = `$${currentAmount.toString()}`;
+	    display = `$${convertAmount(currentAmount.toString())}`;
 	}
 	return display;
     }
