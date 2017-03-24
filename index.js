@@ -8,8 +8,8 @@ function VendingMachine() {
     let purchaseComplete = false;
 
     this.display = () => {
-        let display = 'INSERT COIN'
-        if(purchaseComplete) {
+        let display = 'INSERT COIN';
+        if(purchaseComplete && currentAmount === 0) {
             purchaseComplete = false;
         }
 	else if(priceDisplay != '') {
