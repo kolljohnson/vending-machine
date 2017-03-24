@@ -40,24 +40,18 @@ describe('Vending Machine', () => {
 	});
 
 	it('dispenses product when button pressed and correct change entered', () => {
-	    machine.insertCoin('quarter');
-	    machine.insertCoin('quarter');
+	    machine.insertCoin('quarter', 'quarter');
 	    machine.pressButton('chips');
 	    assert.equal('THANK YOU', machine.display());
 	});
 
 	it('dispenses cola when button pressed and correct change entered', () => {
-	    for(let i = 0; i < 4; i++) {
-		machine.insertCoin('quarter');
-	    }
+	    machine.insertCoin('quarter', 'quarter', 'quarter', 'quarter');
 	    assert.equal('THANK YOU', machine.display());
 	});
 
 	it('dispenses candy when button pressed and correct change entered', () => {
-	    machine.insertCoin('quarter');
-	    machine.insertCoin('quarter');
-	    machine.insertCoin('nickel');
-	    machine.insertCoin('dime');
+	    machine.insertCoin('quarter', 'quarter', 'nickel', 'dime');
 	    machine.pressButton('candy');
 	    assert.equal('THANK YOU', machine.display());
 	});
@@ -71,9 +65,7 @@ describe('Vending Machine', () => {
 	let machine = new VendingMachine();
 
 	it('returns excess change in the coin return after purchase', () => {
-	    for(let i = 0; i < 3; i++) {
-		machine.insertCoin('quarter');
-	    }
+	    machine.insertCoin('quarter', 'quarter', 'quarter');
 	    machine.pressButton('candy');
 	    assert.deepEqual(['dime'], machine.getCoins());
 	});

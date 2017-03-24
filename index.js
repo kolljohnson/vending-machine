@@ -21,14 +21,16 @@ function VendingMachine() {
 	return display;
     }
 
-    this.insertCoin = (coin) => {
-	if(checkCoin(coin) > 0) {
-	    let amount = checkCoin(coin);
-	    currentAmount += amount;
-	    currentAmount.toFixed(2);
-	} else {
-	    coinReturn.push(coin);
-	}
+    this.insertCoin = (...coins) => {
+	coins.forEach((coin) => {
+	    if(checkCoin(coin) > 0) {
+		let amount = checkCoin(coin);
+		currentAmount += amount;
+		currentAmount.toFixed(2);
+	    } else {
+		coinReturn.push(coin);
+	    }
+	});
     }
     
     this.getCoins = () => {
