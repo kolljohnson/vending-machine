@@ -53,6 +53,15 @@ describe('Vending Machine', () => {
 	    assert.equal('THANK YOU', machine.display());
 	});
 
+	it('dispenses candy when button pressed and correct change entered', () => {
+	    machine.insertCoin('quarter');
+	    machine.insertCoin('quarter');
+	    machine.insertCoin('nickel');
+	    machine.insertCoin('dime');
+	    machine.pressButton('candy');
+	    assert.equal('THANK YOU', machine.display());
+	});
+
 	it('displays INSERT COIN after purchase complete', () => {
 	    assert.equal('INSERT COIN', machine.display());
 	});
