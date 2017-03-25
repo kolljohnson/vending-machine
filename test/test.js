@@ -44,6 +44,11 @@ describe('Vending Machine', () => {
 	    assert.equal('PRICE $0.65', machine.display());
 	});
 
+	it('displays price of cola when button pressed and price is invalid', () => {
+	    machine.pressButton('cola');
+	    assert.equal('PRICE $1.00', machine.display());
+	});
+
 	it('dispenses product when button pressed and correct change entered', () => {
 	    machine.insertCoin('quarter', 'quarter');
 	    machine.pressButton('chips');
