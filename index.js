@@ -9,7 +9,8 @@ function VendingMachine() {
 
     this.display = () => {
         let display = 'INSERT COIN';
-        if(purchaseComplete && currentAmount === 0) {
+	
+        if(this.isPurchaseComplete()) {
             purchaseComplete = false;
         }
 	else if(priceDisplay != '') {
@@ -61,11 +62,19 @@ function VendingMachine() {
 
     this.makeChange = () => {
 	Object.keys(validCoins).forEach( (key, index) => {
-	    if(currentAmount >= validCoins[key].toFixed(2)) {
+	    if(this.isAmountLargerThanCoin(validCoins[key])) {
 		currentAmount -= validCoins[key];
 		coinReturn.push(key);
 	    }
 	});
+    }
+
+    this.isPurchaseComplete = () => {
+	return purchaseComplete && currentAmount === 0;
+    }
+
+    this.isAmountLargerThanCoin = (coin) => {
+	return currentAmount >= coin.toFixed(2);
     }
 }
 
